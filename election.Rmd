@@ -26,12 +26,20 @@ x <- read_csv("raw_data/results.csv", skip = 1) %>%
 Estimate probability of Biden winning when only 50 samples
 
 ```{r}
+set.seed(50)
 small <- x %>% 
   slice_sample(n = 50) 
+
+
+fit_1 <- stan_glm(formula = biden_won ~ 1, 
+                  data = small,
+                  family = binomial,
+                  refresh = 0,
+                  seed = 76)
   
 
 
 
 ```
 
-
+representative, population
